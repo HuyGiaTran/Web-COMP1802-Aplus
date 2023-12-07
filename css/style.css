@@ -5,7 +5,12 @@
     --light: #F5F5F5;
     --dark: #14141F;
 }
-
+body{
+    background-color: rgb(48, 49, 25);
+}
+h1{
+    color: #FE8800;
+}
 .fw-medium {
     font-weight: 600 !important;
 }
@@ -171,13 +176,64 @@
 
 
 /*** Hero Header ***/
-.hero-header {
-    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/bg-hero.jpg);
+.hero-header1 {
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/slide1.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+.hero-header2 {
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/slide2.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hero-header3 {
+    background: linear-gradient(rgba(20, 20, 31, .7), rgba(20, 20, 31, .7)), url(../img/slide3.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
 .breadcrumb-item + .breadcrumb-item::before {
     color: rgba(255, 255, 255, .5);
 }
@@ -440,4 +496,85 @@
     margin-right: 0;
     padding-right: 0;
     border-right: none;
+}
+.snow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background-image: url(snow.png);
+    background-size: cover;
+    animation: animationsnow 4s ease-in-out infinite;
+}
+
+#container-snow{
+    overflow: hidden;
+}
+@keyframes animationsnow{
+    0%{
+        transform: translate(0,0);
+        opacity: 0;;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translate(100px,50vh);
+    }
+}
+.sakura{
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 50px;
+    height: 50px;
+    background-image: url(sakura.png);
+    background-size: cover;
+    animation: animationsakura 15s ease-in-out infinite;
+}   
+
+@keyframes animationsakura{
+    0%{
+        transform: translate(0,0);
+    }
+    20%{
+        transform: translate(300px,20vh);
+    }
+    40%{
+        transform: translate(200px,30vh);
+    }
+    60%{
+        transform: translate(400px,60vh);
+    }
+    80%{
+        transform: translate(100px,80vh);
+    }
+    100%{
+        transform: translate(200px,100vh);
+    }
+}
+.fog{
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    background-image: url(fog.png);
+    background-size: cover;
+    animation: animationfog 15s ease-in-out infinite;
+}
+@keyframes animationfog{
+    0%{
+        transform: translate(0,0);
+        opacity: 0.1;
+    }
+    100%{
+        transform: translate(1000px,0);
+        opacity: 0.1;
+    }
+}
+.border-about{
+    border-top: 10px solid rgba(122, 118, 118, 0.5);
 }
