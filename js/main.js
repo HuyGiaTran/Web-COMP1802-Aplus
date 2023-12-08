@@ -91,87 +91,113 @@
     });
     
 })(jQuery);
-let slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
+showSlides();
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
+function showSlides() {
   let i;
   let slides = document.getElementsByClassName("hero");
+  let place1 = document.getElementsByClassName("snow");
+  let place2 = document.getElementsByClassName("fog");
+  let place3 = document.getElementsByClassName("sakura");
   let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
   }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
   slides[slideIndex-1].style.display = "block";  
+  placeSet(slideIndex);
   dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 10000); // Change image every 2 seconds
 }
-let container=document.getElementById('container-snow');
-let count=50;
-for (var i=0;i<200;i++){
-    let leftSnow=Math.floor(Math.random()*container.clientWidth);
-    let topSnow=Math.floor(Math.random()*container.clientHeight);
-    let widthSnow=Math.floor(Math.random()*50);
-    let timeSnow=Math.floor(Math.random()*5+5);
-    console.log(timeSnow);
-    let blurSnow=Math.floor(Math.random()*30);
-    console.log(leftSnow);
-    let div=document.createElement('div');
-    div.classList.add('snow');
-    div.style.left = leftSnow + 'px';
-    div.style.top = topSnow + 'px';
-    div.style.width = widthSnow + 'px';
-    div.style.height = widthSnow + 'px';
-    div.style.animationDuration =  timeSnow + 's';
-    div.style.filter = "blur(" + blurSnow + "px)";
-    container.appendChild(div);
-    
+function placeSet(n){
+    let container=document.getElementById('container-snow');
+    if (n==1){
+        for (var i=0;i<200;i++){
+            let Fog=document.getElementsByClassName("fog");
+            Fog[i].style.display= "block";
+            let leftFog=Math.floor(Math.random()*container.clientWidth-200);
+            let topFog=Math.floor(Math.random()*container.clientHeight);
+            // let widthFog=Math.floor(Math.random()*50);
+            let timeFog=Math.floor(Math.random()*30+5);
+            console.log(timeFog);
+            let blurFog=Math.floor(Math.random()*30);
+            console.log(leftFog);
+            let div=document.createElement('div');
+            div.classList.add('fog');
+            div.style.left = leftFog + 'px';
+            div.style.top = topFog + 'px';
+            // div.style.width = widthFog + 'px';
+            // div.style.height = widthFog + 'px';
+            div.style.animationDuration =  timeFog + 's';
+            div.style.filter = "blur(" + blurFog + "px)";
+            container.appendChild(div);
+            setTimeout(fogSet,10000);
+        }
+    }
+    if (n==2){
+        for (var i=0;i<200;i++){
+            let Sakura=document.getElementsByClassName("sakura");
+            Sakura[i].style.display= "block";
+            let leftSakura=Math.floor(Math.random()*container.clientWidth-200);
+            let topSakura=Math.floor(Math.random()*container.clientHeight);
+            let widthSakura=Math.floor(Math.random()*50);
+            let timeSakura=Math.floor(Math.random()*30+8);
+            console.log(leftSakura);
+            let div=document.createElement('div');
+            div.classList.add('sakura');
+            div.style.left = leftSakura + 'px';
+            div.style.top = topSakura + 'px';
+            div.style.width = widthSakura + 'px';
+            div.style.height = widthSakura + 'px';
+            div.style.animationDuration =  timeSakura + 's';
+            container.appendChild(div);
+            setTimeout(sakuraSet,10000);
+        }
+    }
+    if (n==3){
+        for (var i=0;i<200;i++){
+            let Snow=document.getElementsByClassName("snow");
+            Snow[i].style.display= "block";
+            let leftSnow=Math.floor(Math.random()*container.clientWidth);
+            let topSnow=Math.floor(Math.random()*container.clientHeight);
+            let widthSnow=Math.floor(Math.random()*50);
+            let timeSnow=Math.floor(Math.random()*5+5);
+            console.log(timeSnow);
+            let blurSnow=Math.floor(Math.random()*30);
+            console.log(leftSnow);
+            let div=document.createElement('div');
+            div.classList.add('snow');
+            div.style.left = leftSnow + 'px';
+            div.style.top = topSnow + 'px';
+            div.style.width = widthSnow + 'px';
+            div.style.height = widthSnow + 'px';
+            div.style.animationDuration =  timeSnow + 's';
+            div.style.filter = "blur(" + blurSnow + "px)";
+            container.appendChild(div);
+            setTimeout(snowSet,10000);
+        }
+    }
 }
-let containers=document.getElementById('container-snow');
-for (var i=0;i<200;i++){
-    let leftSnow=Math.floor(Math.random()*containers.clientWidth-200);
-    let topSnow=Math.floor(Math.random()*containers.clientHeight);
-    let widthSnow=Math.floor(Math.random()*50);
-    let timeSnow=Math.floor(Math.random()*7+10);
-    console.log(leftSnow);
-    let div=document.createElement('div');
-    div.classList.add('sakura');
-    div.style.left = leftSnow + 'px';
-    div.style.top = topSnow + 'px';
-    div.style.width = widthSnow + 'px';
-    div.style.height = widthSnow + 'px';
-    div.style.animationDuration =  timeSnow + 's';
-    containers.appendChild(div);
-    
+function fogSet(){
+    for (var i=0;i<200;i++){
+        let Fog=document.getElementsByClassName("fog");
+        Fog[i].style.display= "none";
+    }
 }
-let containerss=document.getElementById('container-snow');
-for (var i=0;i<200;i++){
-    let leftSnow=Math.floor(Math.random()*containerss.clientWidth-200);
-    let topSnow=Math.floor(Math.random()*containerss.clientHeight);
-    // let widthSnow=Math.floor(Math.random()*50);
-    let timeSnow=Math.floor(Math.random()*8+10);
-    console.log(timeSnow);
-    let blurSnow=Math.floor(Math.random()*30);
-    console.log(leftSnow);
-    let div=document.createElement('div');
-    div.classList.add('fog');
-    div.style.left = leftSnow + 'px';
-    div.style.top = topSnow + 'px';
-    // div.style.width = widthSnow + 'px';
-    // div.style.height = widthSnow + 'px';
-    div.style.animationDuration =  timeSnow + 's';
-    div.style.filter = "blur(" + blurSnow + "px)";
-    containerss.appendChild(div);
-    
+function snowSet(){
+    for (var i=0;i<200;i++){
+        let Snow=document.getElementsByClassName("snow");
+        Snow[i].style.display= "none";
+    }
+}
+function sakuraSet(){
+    for (var i=0;i<200;i++){
+        let Sakura=document.getElementsByClassName("sakura");
+        Sakura[i].style.display= "none";
+    }
 }
